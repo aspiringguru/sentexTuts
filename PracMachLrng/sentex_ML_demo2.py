@@ -1,6 +1,6 @@
 #working exercise from sentex tutorials. with mods for clarification + api doc references.
-#Regression Intro - Practical Machine Learning Tutorial with Python p.2
-#https://youtu.be/JcI5Vnw0b2c?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v
+#Regression Intro - Practical Machine Learning Tutorial with Python p.3
+#
 import pandas as pd
 import sklearn
 import quandl

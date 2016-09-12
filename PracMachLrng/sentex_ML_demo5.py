@@ -1,6 +1,8 @@
 #working exercise from sentex tutorials. with mods for clarification + api doc references.
 #Pickling and Scaling - Practical Machine Learning Tutorial with Python p.6
 #https://youtu.be/za5s7RB_VLw?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v
+#update from lecture Testing Assumptions - Practical Machine Learning Tutorial with Python p.12
+#https://youtu.be/Kpxwl2u-Wgk?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v
 '''
 linear regression model  y=mx+b
 '''
@@ -39,19 +41,20 @@ df.fillna(-99999, inplace=True)
 
 print ("df.head()=\n", df.head())
 
-forecast_out = int(math.ceil(0.01*len(df)))
+forecast_out = int(math.ceil(0.1*len(df)))
 newColLabel = str(forecast_out)+" days out"
 print ("forecast_out={}".format(forecast_out))
 
 df[newColLabel] = df[forecast_col].shift(-forecast_out)
 
 X = np.array(df.drop([newColLabel], 1))
-X = X[:-forecast_out]
-#subset X from last 'forecast_out' days to end.
 X = preprocessing.scale(X)
-#subset X from start to exclude last 'forecast_out' days
 X_lately = X[-forecast_out:]
-#
+#subset X from last 'forecast_out' days to end.
+X = X[:-forecast_out]
+#subset X from start to exclude last 'forecast_out' days
+#NB: earlier versions had error here sectioning the datafram.
+#graph plotted from earlier bad code was obviously disjointed.
 
 df.dropna(inplace=True)
 y = np.array(df[newColLabel])
@@ -118,7 +121,7 @@ df['Forecast'].plot()
 plt.legend(loc=4)
 plt.xlabel('Date')
 plt.ylabel('Price')
-plt.title("Title")
+plt.title(stockcode)
 plt.show()
 #plt.savefig('foo.png', bbox_inches='tight')
 """

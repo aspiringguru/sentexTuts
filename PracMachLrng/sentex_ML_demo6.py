@@ -7,6 +7,7 @@ m = mean(x).mean(y) -  mean (x.y)
     ------------------------------
     (mean(x)^2 - mean(x^2)
 '''
+style.use('fivethirtyeight')
 
 from statistics import mean
 import numpy as np
@@ -32,4 +33,5 @@ plt.scatter(xs, ys)
 plt.plot(xs, xs*m)
 plt.xlabel('xs')
 plt.ylabel('ys')
+plt.title("plot y=mx using linear regression")
 plt.show()
